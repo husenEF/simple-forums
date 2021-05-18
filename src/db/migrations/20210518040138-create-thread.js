@@ -1,20 +1,23 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('forums', {
+    await queryInterface.createTable('threads', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      forum_id: {
+        type: Sequelize.INTEGER
+      },
+      user_id: {
+        type: Sequelize.INTEGER
+      },
       title: {
         type: Sequelize.TEXT
       },
       description: {
-        type: Sequelize.TEXT
-      },
-      thumbnail: {
         type: Sequelize.TEXT
       },
       status: {
@@ -25,9 +28,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      deleted_at: {
-        type: Sequelize.DATE
-      },
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -35,6 +35,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('forums');
+    await queryInterface.dropTable('threads');
   }
 };

@@ -1,31 +1,24 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('forums', {
+    await queryInterface.createTable('replies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.TEXT
+      user_id: {
+        type: Sequelize.INTEGER
       },
-      description: {
-        type: Sequelize.TEXT
+      thread_id: {
+        type: Sequelize.INTEGER
       },
-      thumbnail: {
+      body: {
         type: Sequelize.TEXT
-      },
-      status: {
-        type: Sequelize.ENUM("active", "deactive"),
-        defaultValue: "deactive"
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      deleted_at: {
         type: Sequelize.DATE
       },
       updated_at: {
@@ -35,6 +28,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('forums');
+    await queryInterface.dropTable('replies');
   }
 };
