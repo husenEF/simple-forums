@@ -1,15 +1,27 @@
 ## FLow
-* rules:
-    * admin: can manage everithing
-    * moderator: can manage assigned forums
-    * members: can reply, post, create forum
-    * users: public users can view
+**RULES**
+* Public Users: can see active forum, thread
+* Member : 
+    * can do public user do
+    * can create (start) Thread
+    * can reply another Thread
+* Moderator:
+    * can do Public User do,
+    * can do Member do
+    * can manage thread inside forum assigned
+    * remove reply in thread
+* Admin:
+    * can manage everything
+    * CRUD FORUM
+    * CRUD Users
+    * Assinge member to moderator role
+    
 
 ## Development
 
-* git
+* git, 
 using [git flow](https://nvie.com/posts/a-successful-git-branching-model/) for development 
 
-* Database,Mysql
+* Database : postgresql
 
-* ORM, Sequelize
+* ORM :  Sequelize
