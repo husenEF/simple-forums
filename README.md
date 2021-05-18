@@ -15,7 +15,12 @@
     * CRUD FORUM
     * CRUD Users
     * Assinge member to moderator role
-    
+  
+## Feature
+- [x] Migrations
+- [x] Seeder
+- [ ] Register
+- [x] Login Authorization using JWT
 
 ## Development
 
