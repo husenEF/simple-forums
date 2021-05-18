@@ -28,7 +28,7 @@ using [git flow](https://nvie.com/posts/a-successful-git-branching-model/) for d
 
 
 ## Database
-```json
+```
 
 Table Forum as F {
   id int [pk,increment]
@@ -60,7 +60,6 @@ Table Reply as R {
   uid int 
   tid int
   body Text
-  status enum(actove,deactive)
 }
 
 Table forum_moderator as FM {
@@ -78,3 +77,5 @@ ref : F.id < FM.fid
 ref : U.id < FM.uid
 ```
 ![forum](https://user-images.githubusercontent.com/546566/118588047-dda6c080-b7c7-11eb-9082-c31bc62807a5.png)
+* ORM, Sequelize
+
