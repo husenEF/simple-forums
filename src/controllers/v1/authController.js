@@ -55,7 +55,7 @@ class authController {
     console.log({ body, hash });
     try {
       const user = await User.create({
-        username: body.name,
+        username: body.username,
         email: body.email,
         status: "deactive",
         role: "member",
