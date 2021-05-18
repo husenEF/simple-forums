@@ -1,7 +1,6 @@
 // const db = require("./../../db/models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 const sequelize = require("sequelize");
 const saltRounds = 10;
 // const t = await sequelize.Transaction();
