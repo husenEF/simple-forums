@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
     thumbnail: DataTypes.TEXT,
-    status: DataTypes.ENUM("active", "deactive")
+    status: DataTypes.ENUM("active", "deactive"),
+    creator: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Forum',
