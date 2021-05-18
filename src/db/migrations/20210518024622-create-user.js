@@ -12,19 +12,25 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM("active", "deactive"),
+        defaultValue: "deactive"
       },
       role: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM("admin", "moderator", "member"),
+        defaultValue: "member"
       },
       password: {
         type: Sequelize.TEXT
       },
       created_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
         type: Sequelize.DATE
       },
       updated_at: {
