@@ -3,13 +3,13 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const indexRouter = require("./src/routes/index");
+const usersRouter = require("./src/routes/users");
 const router = express.Router();
 
 const app = express();
 
-const v1 = require("./routes/v1");
+const v1 = require("./src/routes/v1");
 
 app.use(logger("dev"));
 app.use(express.json());
