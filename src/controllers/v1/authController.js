@@ -41,7 +41,17 @@ class authController {
       });
     }
   }
-  static async register(req, res, next) {}
+
+  static async register(req, res, next) {
+    const { body } = req;
+    console.log({ body });
+    res.json({ msf: "ok" });
+  }
+  static test(req, res, next) {
+    res.json({
+      msg: "auth test",
+    });
+  }
 }
 
 module.exports = authController;
