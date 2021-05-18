@@ -1,11 +1,17 @@
-const db = require("./../../db/models");
+// const db = require("./../../db/models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const sequelize = require("sequelize");
+const saltRounds = 10;
+// const t = await sequelize.Transaction();
+// const User = require("../../")
+const { User } = require("../../db/models");
+
 class authController {
   static async login(req, res, next) {
     try {
       const { email, password } = req.body;
-      const user = await db.User.findOne({ where: { email } });
+      const user = await User.findOne({ where: { email } });
       if (user) {
         const jwt_secret = process.env.JWT_SECRET;
         const isPasswordMatch = bcrypt.compareSync(password, user.password);
@@ -41,7 +47,40 @@ class authController {
       });
     }
   }
-  static async register(req, res, next) {}
+
+  static async register(req, res, next) {
+    const { body } = req;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(body.password, salt);
+    console.log({ body, hash });
+    try {
+      const user = await User.create({
+        username: body.username,
+        email: body.email,
+        status: "deactive",
+        role: "member",
+        password: hash,
+      });
+      return res.json({
+        data: user,
+        message: "succes create data",
+        status: true,
+      });
+    } catch (e) {
+      const errorMessage = e.errors.map((e) => e.message);
+      return res.json({
+        data: [],
+        message: errorMessage[0],
+        status: false,
+      });
+    }
+  }
+
+  static test(req, res, next) {
+    res.json({
+      msg: "auth test",
+    });
+  }
 }
 
 module.exports = authController;
