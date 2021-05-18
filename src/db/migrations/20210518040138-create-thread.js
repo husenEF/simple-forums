@@ -9,10 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       forum_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "forums",
+        },
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+        },
       },
       title: {
         type: Sequelize.TEXT
