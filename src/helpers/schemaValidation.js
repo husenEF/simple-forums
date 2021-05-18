@@ -3,7 +3,7 @@ const joi = require('joi')
 class SchemaValidation {
     static login() {
         return joi.object({
-            username: joi.string().required(),
+            email: joi.string().required(),
             password: joi.string().required()
         })
     }
