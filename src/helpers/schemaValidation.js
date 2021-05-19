@@ -15,6 +15,12 @@ class SchemaValidation {
       email: joi.string().required(),
     });
   }
+  static createForum() {
+    return joi.object({
+      title: joi.string().required().min(3),
+      description: joi.string().required().min(3),
+    });
+  }
 }
 
 module.exports = SchemaValidation;

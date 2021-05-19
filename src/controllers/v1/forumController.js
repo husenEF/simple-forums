@@ -1,4 +1,5 @@
 const { Forum, sequelize } = require("../../db/models");
+
 class ForumController {
   static async allList(req, res, next) {
     // console.log({ req });
@@ -28,6 +29,22 @@ class ForumController {
         data: [],
       });
     }
+  }
+
+  static async create(req, res, next) {
+    const { body } = req;
+
+    try {
+      const fourm = await Forum.create({
+        title: body.title,
+        description: body.description,
+      });
+      return res.status(201).json({
+        message: "success create forum",
+        data: fourm,
+        status: true,
+      });
+    } catch (error) {}
   }
 }
 
