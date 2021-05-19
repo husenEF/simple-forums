@@ -19,8 +19,10 @@
 ## Feature
 - [x] Migrations
 - [x] Seeder
-- [ ] Register
+- [x] Register
 - [x] Login Authorization using JWT
+- [x] Threads
+- [x] Forums
 
 ## Development
 
