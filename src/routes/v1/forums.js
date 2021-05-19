@@ -11,8 +11,14 @@ router.post(
   "/create",
   authorization,
   validation(schemaValidation.createForum()),
-//   upload.single("thumbnail"),
+  //   upload.single("thumbnail"),
   forumController.create
 );
 
+router.post(
+  "/upload/:forumid",
+  authorization,
+  upload("forums").single("thumbnail"),
+  forumController.upload
+);
 module.exports = router;
