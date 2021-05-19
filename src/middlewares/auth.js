@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const authorization = (req, res, next) => {
+const authentication = (req, res, next) => {
   try {
     const token_bearer = req.headers.authorization;
     if (token_bearer) {
@@ -23,4 +23,25 @@ const authorization = (req, res, next) => {
   }
 };
 
-module.exports = authorization;
+const authorization = (...roles) => {
+  return (req, res, next) => {
+    try {
+      if (roles.includes(req.user.role)) {
+        next();
+      } else {
+        throw new Error("forbidden !");
+      }
+    } catch (error) {
+      return res.status(403).json({
+        status: false,
+        message: error.message,
+        data: [],
+      });
+    }
+  };
+};
+
+module.exports = {
+  authentication,
+  authorization,
+};
