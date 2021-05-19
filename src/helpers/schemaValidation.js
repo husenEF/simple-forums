@@ -21,6 +21,13 @@ class SchemaValidation {
       description: joi.string().required().min(3),
     });
   }
+  static createThread() {
+    return joi.object({
+      forum_id: joi.number().required(),
+      title: joi.string().required(),
+      description: joi.string(),
+    });
+  }
 }
 
 module.exports = SchemaValidation;
