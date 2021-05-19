@@ -28,6 +28,13 @@ class SchemaValidation {
       description: joi.string(),
     });
   }
+
+  static updateThread() {
+    return joi.object({
+      title: joi.string(),
+      description: joi.string(),
+    });
+  }
 }
 
 module.exports = SchemaValidation;
