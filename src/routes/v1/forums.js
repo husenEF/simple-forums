@@ -30,4 +30,5 @@ router.post(
 );
 
 router.get("/:id/threads", ThreadController.threadByForum);
+
 module.exports = router;
