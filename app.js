@@ -5,7 +5,6 @@ const logger = require("morgan");
 const router = express.Router();
 const indexRouter = require("./src/routes/index");
 const usersRouter = require("./src/routes/users");
-const router = express.Router();
 const errorHandler = require("./src/middlewares/errorHandler")
 
 const app = express();
