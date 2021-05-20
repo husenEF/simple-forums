@@ -3,22 +3,31 @@ const router = express.Router();
 
 const forumController = require("../../controllers/v1/forumController");
 // const authorization = require("../../middlewares/auth");
-const { authorization, upload, validation } = require("../../middlewares");
+const {
+  authentication,
+  authorization,
+  upload,
+  validation,
+} = require("../../middlewares");
+const ThreadController = require("../../controllers/v1/threadController");
 const schemaValidation = require("../../helpers/schemaValidation");
 
 router.get("/list/:forumId?", forumController.allList);
 router.post(
   "/create",
-  authorization,
+  authentication,
+  authorization("admin"),
   validation(schemaValidation.createForum()),
-  //   upload.single("thumbnail"),
   forumController.create
 );
 
 router.post(
   "/upload/:forumid",
-  authorization,
+  authentication,
+  authorization("admin"),
   upload("forums").single("thumbnail"),
   forumController.upload
 );
+
+router.get("/:id/threads", ThreadController.threadByForum);
 module.exports = router;
