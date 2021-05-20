@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const threadController = require("../../controllers/v1/threadController");
+const replyController = require("../../controllers/v1/replyController");
 const { authentication, authorization } = require("../../middlewares/auth");
 const SchemaValidation = require("../../helpers/schemaValidation");
 const validate = require("../../middlewares/validation");
@@ -31,5 +32,7 @@ router.get(
   authorization("admin", "moderator"),
   threadController.list
 );
+
+router.get("/:id/replys", replyController.getByTread);
 
 module.exports = router;

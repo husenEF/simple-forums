@@ -14,7 +14,6 @@ class ReplyController {
         data: reply,
       });
     } catch (error) {
-      
       if (error.name === "SequelizeForeignKeyConstraintError") {
         return res.status(404).json({
           message: "Thread not found",
@@ -31,6 +30,24 @@ class ReplyController {
   }
   static async update() {}
   static async delete() {}
+
+  static async getByTread(req, res, next) {
+    const { params } = req;
+    try {
+      const replys = await Reply.findAll({ where: { thread_id: params.id } });
+      return res.json({
+        message: "Succsess get Data",
+        data: replys,
+        status: true,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        message: "Error get Data",
+        data: [],
+        status: false,
+      });
+    }
+  }
 }
 
 module.exports = ReplyController;
