@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER,
     thread_id: DataTypes.INTEGER,
     body: DataTypes.TEXT,
-    status: DataTypes.ENUM("active", "deactive")
+    // status: DataTypes.ENUM("active", "deactive")
   }, {
     sequelize,
     modelName: 'Reply',
