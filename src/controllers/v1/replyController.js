@@ -28,7 +28,31 @@ class ReplyController {
       });
     }
   }
-  static async update() {}
+  static async update(req, res, next) {
+    const { body, params } = req;
+    // console.log({ body, params });
+    try {
+      const [status, thread] = await Reply.update(body, {
+        where: { id: params.id },
+        returning: true,
+      });
+      if (status) {
+        return res.status(201).json({
+          status: true,
+          message: "success update Reply ",
+          data: thread,
+        });
+      } else {
+        throw new Error("no field updated !");
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: false,
+        message: error.message,
+        data: [],
+      });
+    }
+  }
   static async delete() {}
 
   static async getByTread(req, res, next) {
