@@ -53,7 +53,24 @@ class ReplyController {
       });
     }
   }
-  static async delete() {}
+  static async delete(req, res, next) {
+    try {
+      const threads = await Reply.destroy({ where: { id: req.params.id } });
+      if (threads) {
+        return res.json({
+          status: true,
+          message: "success delete Reply",
+          data: [],
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        status: false,
+        message: error.message,
+        data: [],
+      });
+    }
+  }
 
   static async getByTread(req, res, next) {
     const { params } = req;
