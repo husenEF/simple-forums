@@ -35,6 +35,13 @@ class SchemaValidation {
       description: joi.string(),
     });
   }
+
+  static createReply() {
+    return joi.object({
+      thread_id: joi.required(),
+      body: joi.string().required(),
+    });
+  }
 }
 
 module.exports = SchemaValidation;
