@@ -1,0 +1,6 @@
+localhost {
+	respond "Hello, world!"
+}
+localhost:2016 {
+	respond "Goodbye, world!"
+}
