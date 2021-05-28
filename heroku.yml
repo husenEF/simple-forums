@@ -25,9 +25,5 @@ build:
     # PORT: 4000
     SALTROUNDS: 10
     JWT_SECRET: secret
-release:
-  image: web
-  command: 
-    - npm run migrate
 run:
-  web: npm start
+  web: npm run migrate && npm start
