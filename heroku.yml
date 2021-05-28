@@ -2,9 +2,6 @@ setup:
   addons:
     - plan: heroku-postgresql
       as: DATABASE
-build:
-  docker:
-    web: Dockerfile.heroku
   config:
     DB_NAME: d7cu597qqr1325
     DB_PORT: 5432
@@ -15,6 +12,9 @@ build:
     # PORT: 4000
     SALTROUNDS: 10
     JWT_SECRET: secret
+build:
+  docker:
+    web: Dockerfile.heroku
 run:
   web: >
     sh -c "npm run migrate &&
