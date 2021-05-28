@@ -17,5 +17,4 @@ build:
     web: Dockerfile.heroku
 run:
   web: >
-    sh -c "npm run migrate &&
-    npm run start"
+    sh -c "npm run start"
