@@ -8,6 +8,13 @@ const config = {
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // <<<<<<< YOU NEED THIS
+      },
+    },
+    // logging: false,
   },
   test: {
     username: "root",
