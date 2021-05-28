@@ -15,6 +15,16 @@ setup:
 build:
   docker:
     web: Dockerfile.heroku
+  config:
+    DB_NAME: d7cu597qqr1325
+    DB_PORT: 5432
+    DB_DIALECT: postgres
+    DB_PASSWORD: a4709b09850f7830b1293f35dc0548669c82517dadf75d391cdf9f5f2ce8db4c
+    DB_USER: bdqwwldqooofbp
+    DB_HOST: ec2-18-215-111-67.compute-1.amazonaws.com
+    # PORT: 4000
+    SALTROUNDS: 10
+    JWT_SECRET: secret
 release:
   image: web
   command: 
