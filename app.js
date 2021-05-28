@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(errorHandler)
 
 // app.use("/api/",)
-router.use("/", indexRouter);
+app.use("/", indexRouter);
 router.use("/users", usersRouter);
 app.use("/api/v1", v1);
 
