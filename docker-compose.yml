@@ -31,26 +31,24 @@ services:
     depends_on:
       - postgress-db
     ports:
-      - "4000:4000"
+      - "4400:4000"
       # - "6666:3000"
     command: >
       sh -c "./wait-for-it.sh db_forum:5432 -- npm run migrate:drop && npm run migrate &&
               npm run start"
     # command: npm run migrate:drop && npm run migrate && npm run start
+  caddy:
+    image: caddy:2.4.1-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
 
-#     networks:
-#       - app-network
-# networks:
-#   app-network:
-#     driver: bridge
-# command: ./wait-for-it.sh db_forum:5432 -- echo "db_forum is up" -- npm run migrate:drop && npm run migrate && npm run start
-#         DB_NAME=simple_forum
-# DB_PORT=5432
-# DB_DIALECT=postgres
-# DB_PASSWORD=password
-# DB_USER=postgres
-# DB_HOST=127.0.0.1
-# PORT=4000
-# SALTROUNDS=10
-# JWT_SECRET=bismillah
-
+volumes:
+  caddy_data:
+  caddy_config:
