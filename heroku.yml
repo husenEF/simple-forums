@@ -17,6 +17,7 @@ build:
     web: Dockerfile.heroku
 release:
   image: web
-  command: npm run migrate
+  command: 
+    - npm run migrate
 run:
   web: npm start
