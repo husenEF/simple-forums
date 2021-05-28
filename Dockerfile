@@ -25,6 +25,6 @@ COPY . .
 
 RUN chmod +x ./wait-for-it.sh
 
-EXPOSE 3000
+EXPOSE 4000
 
 RUN npm install -g sequelize-cli

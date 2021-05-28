@@ -12,26 +12,38 @@ services:
     expose:
       # Opens port 5432 on the container
       - "5432"
+    # networks:
+    #   - app-network
 
   forum-app:
     build: .
     environment:
-      - DB_NAME:simple_forum
-      - DB_PORT:5432
-      - DB_DIALECT:postgres
-      - DB_PASSWORD:password
-      - DB_USER:postgres
-      - DB_HOST:db_forum
-      - SALTROUNDS:10
-      - JWT_SECRET:bismillah
+      DB_NAME: simple_forum
+      DB_PORT: 5432
+      DB_DIALECT: postgres
+      DB_PASSWORD: password
+      DB_USER: postgres
+      DB_HOST: db_forum
+      SALTROUNDS: 10
+      PORT: 4000
+      JWT_SECRET: bismillah
+
     depends_on:
       - postgress-db
     ports:
-      - "6666:3000"
+      - "4000:4000"
+      # - "6666:3000"
     command: >
-      sh -c "./wait-for-it.sh -t 30 db_forum:5432 -- npm run migrate:drop && npm run migrate &&
+      sh -c "./wait-for-it.sh db_forum:5432 -- npm run migrate:drop && npm run migrate &&
               npm run start"
-    # command: ./wait-for-it.sh db_forum:5432 -- echo "db_forum is up" -- npm run migrate:drop && npm run migrate && npm run start
+    # command: npm run migrate:drop && npm run migrate && npm run start
+
+#     networks:
+#       - app-network
+# networks:
+#   app-network:
+#     driver: bridge
+# command: ./wait-for-it.sh db_forum:5432 -- echo "db_forum is up" -- npm run migrate:drop && npm run migrate && npm run start
 #         DB_NAME=simple_forum
 # DB_PORT=5432
 # DB_DIALECT=postgres
