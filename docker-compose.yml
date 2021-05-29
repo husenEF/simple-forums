@@ -37,18 +37,18 @@ services:
       sh -c "./wait-for-it.sh db_forum:5432 -- npm run migrate:drop && npm run migrate &&
               npm run start"
     # command: npm run migrate:drop && npm run migrate && npm run start
-  caddy:
-    image: caddy:2.4.1-alpine
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - $PWD/Caddyfile:/etc/caddy/Caddyfile
-      - $PWD/site:/srv
-      - caddy_data:/data
-      - caddy_config:/config
+#   caddy:
+#     image: caddy:2.4.1-alpine
+#     restart: unless-stopped
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - $PWD/Caddyfile:/etc/caddy/Caddyfile
+#       - $PWD/site:/srv
+#       - caddy_data:/data
+#       - caddy_config:/config
 
-volumes:
-  caddy_data:
-  caddy_config:
+# volumes:
+#   caddy_data:
+#   caddy_config:
