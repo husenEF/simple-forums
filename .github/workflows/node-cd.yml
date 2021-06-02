@@ -32,4 +32,3 @@ jobs:
             git status
             docker-compose down
             docker-compose up -d
-            
