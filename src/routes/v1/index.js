@@ -13,8 +13,9 @@ router.use("/forums", forums);
 router.use("/reply", reply);
 router.get("/me", (req, res) => {
   return res.json({
-    name: "husen",
+    name: "Refactory",
     company: "Refactory",
+    jobs: "Trainer",
   });
 });
 
