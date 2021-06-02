@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  postgress-db:
+    image: postgres:12
+    container_name: "db_forum"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      # <Port exposed> : < Postgres Port running inside container>
+      - "54321:5432"
+    expose:
+      # Opens port 5432 on the container
+      - "5432"
+    # networks:
+    #   - app-network
+
+  forum-app:
+    build: .
+    environment:
+      DB_NAME: simple_forum
+      DB_PORT: 5432
+      DB_DIALECT: postgres
+      DB_PASSWORD: password
+      DB_USER: postgres
+      DB_HOST: db_forum
+      SALTROUNDS: 10
+      PORT: 4000
+      JWT_SECRET: bismillah
+
+    depends_on:
+      - postgress-db
+    ports:
+      - "4400:4000"
+      # - "6666:3000"
+    command: >
+      sh -c "./wait-for-it.sh db_forum:5432 -- npm run migrate:drop && npm run migrate &&
+              npm run start"
