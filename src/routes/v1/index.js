@@ -16,6 +16,7 @@ router.get("/me", (req, res) => {
     name: "Refactory",
     company: "Refactory",
     jobs: "Trainer",
+    address: "Yogyakarta",
   });
 });
 
