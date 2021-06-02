@@ -28,7 +28,7 @@ jobs:
           port: 22
           script: |
             cd  ~/simple-forums
-            git checkout orign main
+            git checkout origin main
             git pull origin main
             git status
             docker-compose down
