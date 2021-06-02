@@ -17,6 +17,7 @@ services:
 
   forum-app:
     build: .
+    image: forum/app
     environment:
       DB_NAME: simple_forum
       DB_PORT: 5432

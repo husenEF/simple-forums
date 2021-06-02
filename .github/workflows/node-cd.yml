@@ -32,4 +32,5 @@ jobs:
             git pull origin main
             git status
             docker-compose down
+            docker rmi forum/app:latest
             docker-compose up -d
