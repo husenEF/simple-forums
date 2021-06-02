@@ -11,5 +11,11 @@ router.use("/threads", thread);
 router.use("/users", user);
 router.use("/forums", forums);
 router.use("/reply", reply);
+router.get("/me", (req, res) => {
+  return res.json({
+    name: "husen",
+    company: "Refactory",
+  });
+});
 
 module.exports = router;

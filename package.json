@@ -7,7 +7,8 @@
     "dev": "nodemon ./bin/www",
     "migrate": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "migrate:drop": "npx sequelize-cli db:drop",
-    "test": "jest"
+    "test": "jest",
+    "push:release":"git push origin main && git push origin develop && git push --tags"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
