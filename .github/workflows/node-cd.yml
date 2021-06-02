@@ -4,8 +4,7 @@ name: CD
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
+   push:
     tags:
       - "v*.*.*"
       
@@ -25,6 +24,12 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: whoami
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd  ~/home/husenef/simple-forums
+            git pull origin main
+            git status
+            docker-compose down
+            docker-compose up -d
+            
