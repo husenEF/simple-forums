@@ -10,8 +10,15 @@ router.get("/detail/:id", userController.detail);
 router.get(
   "/",
   authentication,
-//   authorization("admin", "moderator"),
+  authorization("admin", "moderator"),
   userController.list
+);
+
+router.delete(
+  "/:id",
+  authentication,
+  authorization("admin"),
+  userController.delete
 );
 
 module.exports = router;

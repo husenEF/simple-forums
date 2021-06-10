@@ -24,7 +24,7 @@ class UserController {
 
   static async detail(req, res, next) {
     try {
-      const id = req.user.id;
+      const id = req.params.id;
       const user = await User.findByPk(id);
       if (user) {
         user.password = undefined;
@@ -64,6 +64,31 @@ class UserController {
         });
       }
     } catch (error) {
+      res.status(500).json({
+        status: false,
+        message: error.message,
+        data: [],
+      });
+    }
+  }
+
+  static async delete(req, res) {
+    try {
+      const id = req.params.id;
+      const del = await User.destroy({
+        where: {
+          id,
+        },
+      });
+
+      if (!del) throw new Error("error delete data");
+      res.status(201).json({
+        status: true,
+        message: "Deleted succes",
+        data: [],
+      });
+    } catch (error) {
+      console.log({ error });
       res.status(500).json({
         status: false,
         message: error.message,
