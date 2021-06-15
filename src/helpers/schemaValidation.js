@@ -42,6 +42,13 @@ class SchemaValidation {
       body: joi.string().required(),
     });
   }
+
+  static updateUser() {
+    return joi.object({
+      status: joi.string().valid("active", "deactive"),
+      role: joi.string().valid("admin", "moderator", "member"),
+    });
+  }
 }
 
 module.exports = SchemaValidation;
